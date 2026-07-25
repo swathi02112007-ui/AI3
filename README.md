@@ -73,31 +73,39 @@ Now, Queue becomes empty, So, terminate these process of iteration.
 from collections import deque
 from collections import defaultdict
 
-def bfs(graph,start,visited,path):
+def bfs(graph, start, visited, path):
     queue = deque()
     path.append(start)
     queue.append(start)
     visited[start] = True
+
     while len(queue) != 0:
         tmpnode = queue.popleft()
+
         for neighbour in graph[tmpnode]:
             if visited[neighbour] == False:
                 path.append(neighbour)
                 queue.append(neighbour)
                 visited[neighbour] = True
+
     return path
 
 graph = defaultdict(list)
-v,e = map(int,input().split())
+
+v, e = map(int, input().split())
+
 for i in range(e):
-    u,v = map(str,input().split())
+    u, v = map(str, input().split())
     graph[u].append(v)
     graph[v].append(u)
 
-start = 'A'
+start = input("Enter the starting node: ")
+
 path = []
 visited = defaultdict(bool)
-traversedpath = bfs(graph,start,visited,path)
+
+traversedpath = bfs(graph, start, visited, path)
+
 print(traversedpath)
 
 ~~~
@@ -137,7 +145,8 @@ G F <BR>
 ['0', '1', '2', '3', '4']
 
 ## EXECUTION:
-<img width="1695" height="776" alt="ai3" src="https://github.com/user-attachments/assets/d60637ff-044e-4f0d-a32f-3bcc3f54ba61" />
+
+![alt text](ai3.png)
 
 <hr>
 <h3>Result:</h3>
